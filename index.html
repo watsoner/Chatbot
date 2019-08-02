@@ -1,21 +1,89 @@
+<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" language="javascript" src="watsonscript.js"></script>
-<link rel="stylesheet" href="style.css">
-</head>
-<body id='body'>
-<h1> Intranet Portal</h1>
-Click the chat box on bottom-right corner to begin.
-<button class="open-button" onclick="openForm()">Chat</button>
-<div class="chat-popup" id="myForm">
-  <form action="javascript:send()" class="form-container">
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    <label for="msg"><b>Message</b></label>
-    <div id="div2" name="msg"></div>
-    <input type="text" placeholder="Type message.." id="input1" required>
-    <button type="submit" class="btn">Send</button>
-  </form>
-</div>
-<div id='div3' style="display: none;">{"conversation_id":"7d09cf69-f0ec-4e1d-84e9-b338528d01fd","system":{"initialized":true,"dialog_stack":[{"dialog_node":"root"}],"dialog_turn_counter":1,"dialog_request_counter":1,"_node_output_map":{"node_12_1554133461784":{"0":[0]}},"branch_exited":true,"branch_exited_reason":"completed"}}</div>
-</body>
+  <head>
+    <title>Watson Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script type="text/javascript" language="javascript" src="watsonscript.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body id='body' class="bg" width="75%">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WATSON DEMO</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#home">HOME</a></li>
+          <li><a href="#overview">OVERVIEW</a></li>
+          <li><a href="#questions">QUESTIONS</a></li>
+          <li><a href="#adddata">ADD DATA</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id='main'>
+      <div id="home" class="bg-1">
+        <h2><strong>Introduction</strong></h2>
+        <p>A simple webpage to demostrate a chatbot created using IBM Watson Assistant. For a short summary of IBM Watson Assistant product, click on <a href="#overview">Overview</a> link. For a list of sample questions you can ask to this chatbot, click on <a href="#questions">Questions</a> link. There is also a feature explaining how Watson can bring in live updated data to the conversation. Click on <a href="#adddata">Add Data</a> link to know more about this.</p>
+        <p>Click on the chat icon at the bottom-right corner of this page to talk to the chatbot.</p>
+      </div>
+      <div id="overview" class="bg-2">
+        <h2><strong>IBM Watson Overview</strong></h2>
+        <p>Watson is IBM&rsquo;s suite of enterprise-ready AI services, applications, and tooling. Watson helps to unlock the value of business data in entirely new, profound ways. By freeing employees from repetitive tasks, Watson can empower teams to focus on more creative, higher-value work. </p>
+        <p>With insights from Watson, the future business outcomes can be predicted and shaped, while rethinking the practices and workflows.</p>
+        <ul>
+          <li>Watson Services (Full list in https://www.ibm.com/cloud/ai)</li>
+          <li>Watson Assistant </li>
+          <li>Watson Machine Learning</li>
+          <li>Watson Discovery</li>
+          <li>Watson Visual Recognition</li>
+          <li>Watson Studio</li>
+        </ul>
+        <h2><strong>Watson Assistant</strong></h2>
+        <ul>  
+          <li>Watson Assistant is an IBM Watson product for building conversational interfaces into any application, device, or channel.</li>
+          <li>Most chatbots try to mimic human interactions, which can frustrate users when a misunderstanding arises.</li>
+          <li>Watson Assistant is more. It knows when to search for an answer from a knowledge base, when to ask for clarity, and when to direct you to a human.</li>
+          <li>Watson Assistant is flexible to be deployed on a website, in a mobile app, on the phone, in messaging channels, and to customer service tools. It supports 13 languages, so you can communicate more effectively and extend your global reach.</li>
+          <li>Watson Assistant can live in an isolated cloud environment or on-premises, allowing it to be built and scaled across the business with a trusted, secure partner.</li>
+        </ul>
+      </div>
+      <div id="questions" class="bg-1">
+        <h2><strong>Sample Questions</strong></h2>
+        <ol>
+          <li>Who are you?</li>
+          <li>What can you do? / can you help me? / what are your capabilities? </li>
+          <li>A job failed / We have a job failure <br />3 job names can be used U1EP1234, U1EP2345, U1EP3456</li>
+          <li>We need an IRT / There is an emergency<br />Technologies used are IIB/Java/ML</li>
+          <li>I need a membership report/claims report</li>
+          <li>An application is running slow<br />Applications used are CMA,HRP</li>
+          <li>I need a link<br />Links used are SNOW/KEDB/Shift Roster</li>
+          <li>Shift POC details / Who is the ML POC now<br />Technologies used are IIB/Java/ML</li>
+        </ol>
+      </div>
+      <img src="./img/chatbox.png" class="fixed" onclick="openForm()"/>
+      <div class="chat-popup" id="myForm">
+        <form action="javascript:send()" class="form-container" autocomplete="off">
+          <label for="msg" align="left"><img src="./img/watson_icon.png" width="30" height="30" style="cursor:pointer;background-color: Transparent;"/><b> IBM Watson Assistant</b></label>
+          <span style="float:right;"><img src="./img/close.png" width="30" height="30" style="cursor:pointer;background-color: Transparent;" onclick="closeForm()"/></span>
+          <div id="div2" name="msg"></div>
+          <input type="text" placeholder="Type message.." id="input1" required>
+	  <span style="float:right;border:5px;"><button type="submit" style="position:relative; border: 0; padding: 7px 10px; background-color: Transparent;"><img src="./img/send.png" width="30" height="30"/></button></span>
+        </form>
+      </div>
+      <div id='div3' style="display: none;">{"conversation_id":"7d09cf69-f0ec-4e1d-84e9-b338528d01fd","system":{"initialized":true,"dialog_stack":[{"dialog_node":"root"}],"dialog_turn_counter":1,"dialog_request_counter":1,"_node_output_map":{"node_12_1554133461784":{"0":[0]}},"branch_exited":true,"branch_exited_reason":"completed"}}</div>
+    </div>
+    <footer class="text-center">
+      <a class="up-arrow" href="#home">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </a><br><br>
+      <p>© Cognizant</p> 
+    </footer>
+  </body>
 </html>
