@@ -16,6 +16,7 @@ function send()
 //      ItemJSON = '{  "input": {    "message_type": "text",    "text": "' + inputtext + '"}}'; //without context variable
 //      var linksJSON = JSON.parse('{"Shift Roster":"Roster.com","SNOW":"SNOW.com"}');
         var filetext = readDataFile("data.json");
+console.info(filetext);
         var linksJSON2 = JSON.parse(filetext);
         if(ItemJSON) {
                 ItemJSON.context["rawdatavar"]=linksJSON2; 	
