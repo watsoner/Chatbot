@@ -9,14 +9,12 @@ function send()
         {  ItemJSON = '';  }
         else 
         {
-        document.getElementById("div2").innerHTML += "<br>";
-        document.getElementById("div2").innerHTML += "You: " + inputtext;
+        document.getElementById("div2").innerHTML += "<p class=p_user>" + inputtext + "&nbsp;<img src=./img/user_icon.png class='iconpic'/></p>";
         document.getElementById("input1").value = "";
         ItemJSON = JSON.parse('{  "input": {    "message_type": "text",    "text": "' + inputtext + '" }, "context": ' + document.getElementById("div3").innerHTML + ' }');
 //      ItemJSON = '{  "input": {    "message_type": "text",    "text": "' + inputtext + '"}}'; //without context variable
 //      var linksJSON = JSON.parse('{"Shift Roster":"Roster.com","SNOW":"SNOW.com"}');
         var filetext = readDataFile("data.json");
-console.info(filetext);
         var linksJSON2 = JSON.parse(filetext);
         if(ItemJSON) {
                 ItemJSON.context["rawdatavar"]=linksJSON2; 	
@@ -34,12 +32,10 @@ console.info(filetext);
     var obj2 = JSON.parse(JSON.stringify(obj1.output));
     var obj21= JSON.parse(JSON.stringify(obj1.context));
     var obj3 = JSON.parse(JSON.stringify(obj2.text));
-    document.getElementById("div2").innerHTML += "<br>";
-    document.getElementById("div2").innerHTML += "ChatBot: " + JSON.stringify(obj3);
+    document.getElementById("div2").innerHTML += "<p class=p_bot><img src=./img/watson_icon.png class='iconpic'/>&nbsp;" + JSON.stringify(obj3) + "</p>";
     document.getElementById("div2").scrollTop = document.getElementById("div2").scrollHeight;
     document.getElementById("div3").innerHTML = JSON.stringify(obj21);
 }
-
 function readDataFile(file)
 {
     var rawFile = new XMLHttpRequest();
@@ -58,7 +54,6 @@ function readDataFile(file)
     rawFile.send(null);
     return filedata;
 }
-
 function callbackFunction(xmlhttp) 
 {
     //alert(xmlhttp.responseXML);
@@ -71,3 +66,31 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
   document.getElementById("div2").innerHTML = "";
 }
+$(document).ready(function(){
+  // Initialize Tooltip
+  $('[data-toggle="tooltip"]').tooltip(); 
+  
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#home']").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+})

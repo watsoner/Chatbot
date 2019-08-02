@@ -1,8 +1,24 @@
-body {font-family: Calibri, Arial, Helvetica, sans-serif;
-background-color: #aaa;
+body {
+  font-family: Calibri, Arial, Helvetica, sans-serif;
+  background-color: #aaa;
+  font: 400 15px/1.8 Lato, sans-serif;
+  color: #333;
 }
 * {box-sizing: border-box;}
 
+.navbar {
+  font-family: Montserrat, sans-serif;
+}
+.bg-1 {
+    padding: 80px 120px;
+    background: #d3d3cf;
+    color: #535353;
+}
+.bg-2 {
+    padding: 80px 120px;
+    background: #3d3d40;
+    color: #bdbdbd;
+}
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
   background-color: #555;
@@ -16,22 +32,61 @@ background-color: #aaa;
   right: 28px;
   width: 280px;
 }
+img.fixed {
+	position: fixed;
+        cursor: pointer;
+  	bottom: 15px;
+  	right: 15px;
+  	width: 75px;
+  	height: 75px;
+}
+img.iconpic {
+	vertical-align: text-bottom;
+  	width: 25px;
+  	height: 25px;
+        padding:2px;
+}
+.p_user {
+	vertical-align: middle;
+	text-align: right;
+	margin 5px;
+	min-height: 25px;
+        padding:5px;
+	background-color: #ADD8E6;
+	border: solid 1px #ADD8E6;
+	border-radius: 10px;
+        color: black;
+}
 
+.p_bot {
+	vertical-align: middle;
+	text-align: left;
+	margin 5px;
+	text-indent: 5em hanging each-line;
+	min-height: 25px;
+        padding:5px;
+	background-color: #90EE90;
+	border: solid 1px #90EE90;
+	border-radius: 10px;
+        color: black;
+}
 /* The popup chat - hidden by default */
 .chat-popup {
   display: none;
   position: fixed;
-  bottom: 0;
+  bottom: 0px;
   right: 15px;
   border: 3px solid #f1f1f1;
   z-index: 9;
+  background-color: #fff;
 }
 
 /* Add styles to the form container */
 .form-container {
+  font-size:95%;
   max-width: 300px;
   padding: 10px;
-  background-color: white;
+  background-color: #fff;
 }
 
 /* Full-width textarea */
@@ -42,18 +97,18 @@ background-color: #aaa;
   border: none;
   background: #f1f1f1;
   resize: none;
-  height: 200px;
+  height: 300px;
   overflow: scroll;
 }
 
 .form-container input {
-  width: 100%;
-  padding: 15px;
+  width: 80%;
+  padding: 5px 15px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
   resize: none;
-  min-height: 40px;
+  min-height: 30px;
 }
 
 /* When the textarea gets focus, do something */
