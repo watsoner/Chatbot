@@ -13,11 +13,13 @@ body {
     padding: 80px 120px;
     background: #d3d3cf;
     color: #535353;
+    min-height:100%;
 }
 .bg-2 {
     padding: 80px 120px;
     background: #3d3d40;
     color: #bdbdbd;
+    min-height:100%;
 }
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
