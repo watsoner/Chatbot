@@ -61,7 +61,7 @@ function writeDataFile(file)
     var rawFile = new XMLHttpRequest();	
     rawFile.open("POST", file, false);
     rawFile.setRequestHeader("Content-Type", "application/json");
-    rawFile.onreadystatechange = callbackFunction(xmlhttp);
+    rawFile.onreadystatechange = callbackFunction(rawFile);
     rawFile.send(JSON.stringify('{"hi":"hello","bye":"bubye"}'));	
     rawFile.onloadend = function () {
     };
