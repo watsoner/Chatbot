@@ -58,6 +58,16 @@ function updateTable()
 }
 function writeDataFile(file)
 {
+	var fs = require('fs');
+	fs.writeFile(file, "Hey there!", function(err) {
+		if(err) {
+			console.log(err);
+		} else {
+			console.log("The file was saved!");
+		}
+	}); 
+	/*
+	var fso = new ActiveXObject(
     var rawFile = new XMLHttpRequest();	
     rawFile.open("POST", file, false);
     rawFile.setRequestHeader("Content-Type", "application/json");
@@ -65,6 +75,7 @@ function writeDataFile(file)
     rawFile.send(JSON.stringify({"hi":"hello","bye":"bubye"}));	
     rawFile.onloadend = function () {
     };
+	*/
 }
 function readDataFile(file)
 {
