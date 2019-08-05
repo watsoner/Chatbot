@@ -1,7 +1,7 @@
 var jsonFileName = "data.json"; //global variable
 var filetext = readDataFile(jsonFileName);
 var linksJSON = JSON.parse(filetext);
-document.getElementById("div4").innerHTML = filetext;
+var contextTemp = {"conversation_id":"7d09cf69-f0ec-4e1d-84e9-b338528d01fd","system":{"initialized":true,"dialog_stack":[{"dialog_node":"root"}],"dialog_turn_counter":1,"dialog_request_counter":1,"_node_output_map":{"node_12_1554133461784":{"0":[0]}},"branch_exited":true,"branch_exited_reason":"completed"}};
   
 function send()
 {
@@ -16,9 +16,7 @@ function send()
         {
         document.getElementById("div2").innerHTML += "<p class=p_user>" + inputtext + "&nbsp;<img src=./img/user_icon.png class='iconpic'/></p>";
         document.getElementById("input1").value = "";
-        ItemJSON = JSON.parse('{  "input": {    "message_type": "text",    "text": "' + inputtext + '" }, "context": ' + document.getElementById("div3").innerHTML + ' }');
-//      ItemJSON = '{  "input": {    "message_type": "text",    "text": "' + inputtext + '"}}'; //without context variable
-//      var linksJSON2 = JSON.parse('{"Shift Roster":"Roster.com","SNOW":"SNOW.com"}');
+        ItemJSON = JSON.parse('{  "input": {    "message_type": "text",    "text": "' + inputtext + '" }, "context": ' + contextTemp + ' }');
         if(ItemJSON) {
                 ItemJSON.context["rawdatavar"]=linksJSON; 	
                 };
@@ -40,12 +38,10 @@ function send()
       };
     };
     document.getElementById("div2").scrollTop = document.getElementById("div2").scrollHeight;
-    document.getElementById("div3").innerHTML = JSON.stringify(obj21);
+    contextTemp = JSON.stringify(obj21);
 }
 function loadTable()
 {
-		//var filetext = readDataFile(jsonFileName);
-        //var dataLoaded = JSON.parse(filetext);	
 		var dataLoaded = linksJSON;
 		var txt = "<table id='jsonTable' border='1'>";
 		for (var key in dataLoaded) {
@@ -56,28 +52,20 @@ function loadTable()
 }
 function updateTable()
 {
-	   var newtable = $('#jsonTable').tableToJSON();
+	   var newtable = tableToJSON(jsonTable);
 	   linksJSON = newtable;
+	   console.log(linksJSON);
 }
-/*function writeDataFile(file)
+function tableToJSON(table)
 {
-	var fs = require('fs');
-	fs.writeFile(file, "Hey there!", function(err) {
-		if(err) {
-			console.log(err);
-		} else {
-			console.log("The file was saved!");
-		}
-	});
-	var fso = new ActiveXObject(
-    var rawFile = new XMLHttpRequest();	
-    rawFile.open("POST", file, false);
-    rawFile.setRequestHeader("Content-Type", "application/json");
-    rawFile.onreadystatechange = callbackFunction(rawFile);
-    rawFile.send(JSON.stringify({"hi":"hello","bye":"bubye"}));	
-    rawFile.onloadend = function () {
-    };
-}*/
+	var data={};
+	for (var i=0; i<table.rows.length; i++) {
+		var tableRow = table.rows[i];
+		data[tableRow.cells[0].innerHTML]=tableRow.cells[1].innerHTML;
+		console.log(data);
+	}
+	return data;
+}
 function readDataFile(file)
 {
     var rawFile = new XMLHttpRequest();
