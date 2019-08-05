@@ -6,6 +6,9 @@ body {
 }
 * {box-sizing: border-box;}
 
+td {
+	padding: 5px 10px;
+}
 .navbar {
   font-family: Montserrat, sans-serif;
 }

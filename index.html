@@ -71,6 +71,12 @@
           <li>Shift POC details / Who is the ML POC now<br />Technologies used are IIB/Java/ML</li>
         </ol>
       </div>
+	  <div id="adddata" class="bg-2">
+	    <h2><strong>Add Data</strong></h2>
+		<button onclick="loadTable()" style="color:#555; margin:10px 0px;">Load/Refresh Table</button>
+		<div id="tabledata"></div>
+		<button onclick="updateTable()" style="color:#555; margin:10px 0px;">Update Table</button>
+		</div>
       <img src="./img/chatbox.png" class="fixed" onclick="openForm()"/>
       <div class="chat-popup" id="myForm">
         <form action="javascript:send()" class="form-container" autocomplete="off">
@@ -87,7 +93,7 @@
       <a class="up-arrow" href="#home">
         <span class="glyphicon glyphicon-chevron-up"></span>
       </a><br><br>
-      <p>Â© Cognizant</p> 
+      <p>© Cognizant</p> 
     </footer>
   </body>
 </html>
