@@ -47,7 +47,7 @@ function loadTable()
 		//var filetext = readDataFile(jsonFileName);
         //var dataLoaded = JSON.parse(filetext);	
 		var dataLoaded = linksJSON;
-		var txt = "<table id="jsonTable" border='1'>";
+		var txt = "<table id='jsonTable' border='1'>";
 		for (var key in dataLoaded) {
 			txt += "<tr><td contenteditable='true'>" + key + "</td><td contenteditable='true'>" + dataLoaded[key] + "</td></tr>";			
 		}
