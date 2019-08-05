@@ -59,8 +59,8 @@ function updateTable()
 function writeDataFile(file)
 {
     var rawFile = new XMLHttpRequest();	
-	rawFile.open("POST", file, false);
-	rawFile.setRequestHeader("Content-Type", "application/json");
+    rawFile.open("POST", file, false);
+    rawFile.setRequestHeader("Content-Type", "application/json");
     rawFile.onreadystatechange = callbackFunction(xmlhttp);
     rawFile.send(JSON.stringify('{"hi":"hello","bye":"bubye"}'));	
     rawFile.onloadend = function () {
