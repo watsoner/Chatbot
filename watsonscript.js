@@ -24,14 +24,12 @@ function send()
         ItemJSON = JSON.stringify(ItemJSON);
         };
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.open("POST", URL, false);
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.setRequestHeader('Authorization', 'Basic YXBpa2V5Okl6NkpzQkhHTXR3eU5oM3pDNDYweUV5MTNWazA4SzhfU005cEo5RV91c3Q4'); //in prod, you should encrypt user name and password and provide encrypted keys here instead 
     xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
     xmlhttp.send(ItemJSON);
     var obj1 = JSON.parse(xmlhttp.responseText);
-console.info(obj1);
     var obj2 = obj1.output;
     var obj21= obj1.context;
     var obj3 = obj2.text;
@@ -60,9 +58,11 @@ function updateTable()
 }
 function writeDataFile(file)
 {
-    var rawFile = new XMLHttpRequest();
+    var rawFile = new XMLHttpRequest();	
+	rawFile.setRequestHeader("Content-Type", "application/json");
+    rawFile.onreadystatechange = callbackFunction(xmlhttp);
 	rawFile.open("POST", file, false);
-    rawFile.send('{"hi":"hello","bye":"bubye"}');	
+    rawFile.send(JSON.stringify('{"hi":"hello","bye":"bubye"}'));	
     rawFile.onloadend = function () {
     };
 }
