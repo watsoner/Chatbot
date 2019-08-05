@@ -1,4 +1,7 @@
 var jsonFileName = "data.json"; //global variable
+var filetext = readDataFile(jsonFileName);
+var linksJSON = JSON.parse(filetext);
+document.getElementById("div4").innerHTML = filetext;
   
 function send()
 {
@@ -15,11 +18,9 @@ function send()
         document.getElementById("input1").value = "";
         ItemJSON = JSON.parse('{  "input": {    "message_type": "text",    "text": "' + inputtext + '" }, "context": ' + document.getElementById("div3").innerHTML + ' }');
 //      ItemJSON = '{  "input": {    "message_type": "text",    "text": "' + inputtext + '"}}'; //without context variable
-//      var linksJSON = JSON.parse('{"Shift Roster":"Roster.com","SNOW":"SNOW.com"}');
-        var filetext = readDataFile(jsonFileName);
-        var linksJSON2 = JSON.parse(filetext);
+//      var linksJSON2 = JSON.parse('{"Shift Roster":"Roster.com","SNOW":"SNOW.com"}');
         if(ItemJSON) {
-                ItemJSON.context["rawdatavar"]=linksJSON2; 	
+                ItemJSON.context["rawdatavar"]=linksJSON; 	
                 };
         ItemJSON = JSON.stringify(ItemJSON);
         };
@@ -33,19 +34,20 @@ function send()
     var obj2 = obj1.output;
     var obj21= obj1.context;
     var obj3 = obj2.text;
-for (var key in obj3) {
-  if(obj3[key]) {
-    document.getElementById("div2").innerHTML += "<p class=p_bot><img src=./img/watson_icon.png class='iconpic'/>&nbsp;" + obj3[key] + "</p>";
+    for (var key in obj3) {
+      if(obj3[key]) {
+        document.getElementById("div2").innerHTML += "<p class=p_bot><img src=./img/watson_icon.png class='iconpic'/>&nbsp;" + obj3[key] + "</p>";
+      };
     };
-  };
     document.getElementById("div2").scrollTop = document.getElementById("div2").scrollHeight;
     document.getElementById("div3").innerHTML = JSON.stringify(obj21);
 }
 function loadTable()
 {
-		var filetext = readDataFile(jsonFileName);
-        var dataLoaded = JSON.parse(filetext);	
-		var txt = "<table border='1'>";
+		//var filetext = readDataFile(jsonFileName);
+        //var dataLoaded = JSON.parse(filetext);	
+		var dataLoaded = linksJSON;
+		var txt = "<table id="jsonTable" border='1'>";
 		for (var key in dataLoaded) {
 			txt += "<tr><td contenteditable='true'>" + key + "</td><td contenteditable='true'>" + dataLoaded[key] + "</td></tr>";			
 		}
@@ -54,9 +56,10 @@ function loadTable()
 }
 function updateTable()
 {
-	   writeDataFile(jsonFileName);	   
+	   var newtable = $('#jsonTable').tableToJSON();
+	   linksJSON = newtable;
 }
-function writeDataFile(file)
+/*function writeDataFile(file)
 {
 	var fs = require('fs');
 	fs.writeFile(file, "Hey there!", function(err) {
@@ -65,8 +68,7 @@ function writeDataFile(file)
 		} else {
 			console.log("The file was saved!");
 		}
-	}); 
-	/*
+	});
 	var fso = new ActiveXObject(
     var rawFile = new XMLHttpRequest();	
     rawFile.open("POST", file, false);
@@ -75,8 +77,7 @@ function writeDataFile(file)
     rawFile.send(JSON.stringify({"hi":"hello","bye":"bubye"}));	
     rawFile.onloadend = function () {
     };
-	*/
-}
+}*/
 function readDataFile(file)
 {
     var rawFile = new XMLHttpRequest();
