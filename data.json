@@ -1,17 +1,12 @@
 {
-"Shift Roster":"https://www.google.com",
-"SNOW":"https://www.wikipedia.org",
-"SOW":"http://www.youtube.com",
-"Shift Roster1":"https://www.google.com",
-"SNOW1":"https://www.wikipedia.org",
-"SOW1":"http://www.youtube.com",
-"Shift Roster2":"https://www.google.com",
-"SNOW2":"https://www.wikipedia.org",
-"SOW2":"http://www.youtube.com",
-"Shift Roster3":"https://www.google.com",
-"SNOW3":"https://www.wikipedia.org",
-"SOW3":"http://www.youtube.com",
-"Shift Roster4":"https://www.google.com",
-"SNOW4":"https://www.wikipedia.org",
-"SOW4":"http://www.youtube.com"
+"Shift Roster":"Link-For-Shift-Roster",
+"SNOW":"Link-For-Service-Now",
+"KEDB":"Link-For-Known-Error-DB",
+"SOW":"Link-For-Statement-Of-Work",
+"HELP":"Link-For-Self-Help",
+"ACADEMY":"Link-For-Learning",
+"TIMESHEET":"Link-For-Timesheet",
+"HR":"Link-For-Human-Resources",
+"Finance":"Link-For-Finance",
+"BCP":"Link-For-Business-Continuity"
 }
