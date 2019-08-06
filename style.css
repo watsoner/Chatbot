@@ -84,6 +84,7 @@ img.iconpic {
   border: 3px solid #f1f1f1;
   z-index: 9;
   background-color: #fff;
+  min-width:300px;
 }
 
 /* Add styles to the form container */
