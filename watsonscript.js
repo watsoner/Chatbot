@@ -2,7 +2,7 @@ var jsonFileName = "data.json"; //global variable
 var filetext = readDataFile(jsonFileName);
 var linksJSON = JSON.parse(filetext);
 var contextTemp = {"conversation_id":"7d09cf69-f0ec-4e1d-84e9-b338528d01fd","system":{"initialized":true,"dialog_stack":[{"dialog_node":"root"}],"dialog_turn_counter":1,"dialog_request_counter":1,"_node_output_map":{"node_12_1554133461784":{"0":[0]}},"branch_exited":true,"branch_exited_reason":"completed"}};
-  
+
 function send()
 {
     var urlvariable;
@@ -52,9 +52,17 @@ function loadTable()
 }
 function updateTable()
 {
-	   var newtable = tableToJSON(jsonTable);
-	   linksJSON = newtable;
-	   console.log(linksJSON);
+	    var newtable = tableToJSON(jsonTable);
+	    linksJSON = newtable;
+	    console.log(linksJSON);
+	    /* NodeJS Code begins*/
+	    var fs = require('fs');
+	    var file = require(jsonFileName);
+        fs.writeFile(jsonFilename, JSON.stringify(linksJSON), function (err) {
+			if (err) return console.log(err);
+			console.log("write completed");
+		});
+	    /* NodeJS Code ends*/
 }
 function tableToJSON(table)
 {
